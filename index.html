@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Integridade do Ambiente - Obras</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Integridade do ambiente - Obras</h1>
+      <div class="variaveis">
+        <div class="elemento-var">
+          <span>Permissão de escrita nas pastas:</span>
+          <div class="loader">
+            <i class="far fa-question-circle" id="permissaoLoader"></i>
+          </div>
+        </div>
+        <div class="elemento-var">
+          <span>Módulos do PHP:</span>
+          <div class="loader">
+            <i class="far fa-question-circle" id="modulosLoader"></i>
+          </div>
+        </div>
+        <div class="elemento-var">
+          <span>Status da conexão com o Banco de Dados:</span>
+          <div class="loader">
+            <i class="far fa-question-circle" id="conexaoLoader"></i>
+          </div>
+        </div>
+        <div class="elemento-var">
+          <span>Quantidade de arquivos na pasta:</span>
+          <div class="loader">
+            <i class="far fa-question-circle" id="arquivosLoader"></i>
+          </div>
+        </div>
+      </div>
+      <div id="resultado"></div>
+      <div class="botoes">
+        <button id="testarVariaveisBtn" class="botao">Checar ambiente</button>
+        <button class="botao" id="limparBtn">Limpar</button>
+      </div>
+    </div>
+
+    <!-- PopUps -->
+    <div class="pop-up">
+      <div class="pop-up-elems">
+        <h2>Você tem certeza disso?</h2>
+        <div class="pop-up-buttons">
+          <button id="sim">Sim</button>
+          <button id="nao">Não</button>
+        </div>
+        <span id="close-modal">&times;</span>
+      </div>
+    </div>
+
+    <script src="assets/js/JQuery/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

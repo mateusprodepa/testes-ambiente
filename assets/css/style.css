@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo|Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+*::selection {
+  background-color: #D7CCC8;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(45deg, #EEEEEE 70%, #F5F5F5 30%);
+}
+
+h1 {
+  font-family: "Montserrat";
+}
+
+
+#wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+  padding: 40px;
+  padding-top: 0;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.4);
+  border: 0.5px solid #000;
+  margin-top: 25px;
+  transition: all 2s ease;
+  background-color: rgba(255, 255, 255, 1);
+  /* border-radius: 25px; */
+}
+
+#wrapper .botao:disabled {
+  filter: blue(4px);
+  background-color: #E4F0F1;
+  color: #333;
+}
+
+.variaveis {
+  display: flex;
+  flex-direction: column;
+  flex-flow: 1;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.variaveis span {
+  font-family: "Montserrat";
+}
+
+#wrapper .botao {
+  width: 50%;
+  flex: 1;
+  margin-bottom: 10px;
+  background-color: #222222;
+  color: #EEEEEE;
+  height: 35px;
+  border-radius: 25px;
+  transition: all .3s ease;
+  cursor: pointer;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+}
+
+#wrapper .botao:hover {
+  transform: scale(1.02);
+  background-color: #EEE;
+  color: #222222;
+  border: 0.5px solid #222222;
+}
+
+#resultado {
+  width: 100%;
+  height: 235px;
+  padding: 15px;
+  position: relative;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: .4rem;
+}
+
+#resultado span {
+  font-family: 'Arimo', sans-serif;
+  font-size: 0.8rem;
+  color: #333;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+#resultado span strong.bold {
+  font-family: "Lato" !important;
+}
+
+#resultado .data {
+  font-family: "Montserrat";
+  color: #6C7A89;
+}
+
+#resultado::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 25px;
+}
+
+#resultado::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+#resultado::-webkit-scrollbar-thumb {
+  background-color: rgb(33, 33, 33);
+  outline: 1px solid rgb(33, 33, 33);
+}
+
+.elemento-var {
+  display: flex;
+  justify-content: space-between;
+}
+
+.elemento-var i {
+  color: #26A65B;
+}
+
+.spinner {
+  border: 2px solid #26A65B;
+  border-radius: 50%;
+  border-top: 2px solid #EEE;
+  width: 11px;
+  height: 11px;
+  -webkit-animation: spin 1.2s linear infinite; /* Safari */
+  animation: spin 1.2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fa-times-circle {
+  color: #cd0000 !important;
+}
+
+.botoes {
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+  margin-top: 30px;
+}
+
+
+/* Popups */
+.pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+  background-color: #F5F5F5;
+  border-radius: .9rem;
+  border: 3px solid rgba(33, 33, 33, 0.4);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.pop-up-elems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding: 14px;
+  font-family: "Montserrat";
+}
+
+.pop-up-buttons {
+  display: flex;
+  width: 100%;
+}
+
+.pop-up-buttons #sim:hover {
+  background-color: #CD0000;
+}
+
+.pop-up-buttons #nao:hover {
+  background-color: #007788;
+  color: #f5f5f5;
+}
+
+.pop-up-buttons button {
+  margin: 2px;
+  border: 1px solid #ccc;
+  transition: all .2s ease;
+  width: 50%;
+  flex: 1;
+  margin-bottom: 10px;
+  background-color: #222222;
+  color: #EEEEEE;
+  height: 35px;
+  border-radius: 25px;
+  transition: all .3s ease;
+  cursor: pointer;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+}
+
+#close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+/* @keyframes button-anim {
+} */
