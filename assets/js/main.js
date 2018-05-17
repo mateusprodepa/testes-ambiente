@@ -23,12 +23,12 @@ const loaders = {
 
 function ativarModal() {
   popUp.style.opacity = 1;
-  popUp.style.transform = "translateY(0px)";
+  popUp.style.transform = "translate(-50%, 0px)";
 }
 
 function fecharModal() {
   popUp.style.opacity = 0;
-  popUp.style.transform = "translateY(-2000px)";
+  popUp.style.transform = "translate(-50%, -2000px)";
 }
 
 const modulos = [
