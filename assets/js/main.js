@@ -18,12 +18,13 @@ const loaders = {
   arquivos: document.querySelector("#arquivosLoader"),
   modulos: document.querySelector("#modulosLoader"),
   conexao: document.querySelector("#conexaoLoader"),
+  relatorios: document.querySelector("#relatoriosLoader"),
 }
 
 
 function ativarModal() {
   popUp.style.opacity = 1;
-  popUp.style.transform = "translate(-50%, 0px)";
+  popUp.style.transform = "translate(-50%, -50%)";
 }
 
 function fecharModal() {
@@ -35,7 +36,8 @@ const modulos = [
   { func: "testarPermissoes", loader: "permissao" },
   { func: "testarBanco", loader: "conexao" },
   { func: "testarModulos", loader: "modulos" },
-  { func: "testarQuantidadeArquivos", loader: "arquivos" }
+  { func: "testarQuantidadeArquivos", loader: "arquivos" },
+  { func: "testarRelatorios", loader: "relatorios" },
 ]
 
 function testarDados() {
@@ -80,3 +82,7 @@ window.addEventListener("keydown", function(e) {
   if (e.keyCode !== 13) return;
   testarDados();
 });
+
+// clearBtn.addEventListener("click", function() {
+//   if(result.innerText !== "") clearBtn.setAttribute("disabled", "disabled");
+// });

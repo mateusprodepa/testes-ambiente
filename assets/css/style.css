@@ -37,7 +37,7 @@ h1 {
 }
 
 #wrapper .botao:disabled {
-  filter: blue(4px);
+  filter: blur(4px);
   background-color: #E4F0F1;
   color: #333;
 }

@@ -1,7 +1,10 @@
 <?php
   require_once "../../../config/config.php";
+  require_once "../../libs/phpjasper-master/src/PHPJasper.php";
 
-  // Dados do Banco de dados propriamente dito
+  use PHPJasper\PHPJasper;
+
+  // Variáveis do banco de dados
   $host = CONF_BD_SERVER;
   $usuario = CONF_BD_USER;
   $senha = CONF_BD_PASSWD;
@@ -21,7 +24,7 @@
     if($conexao) {
       echo 'Conexão com o banco de dados funcionando normalmente. <br>';
     } else {
-      echo '<strong style=\"color: #cd0000;\"><i>ERRO:</i></strong> <strong>Não foi possível conectar ao banco de dados</strong> <br>';
+      echo "<strong style='color: #cd0000;''><i>ERRO:</i></strong> <strong>Não foi possível conectar ao banco de dados</strong>. <br>";
     }
 
     $q1 = "SELECT 'Contratos'
@@ -56,8 +59,8 @@
         $n =  $cons['qtd'];
       }
 
-      echo "A pasta $nome deve conter <strong>$n</strong> arquivos <br>";
-    } else { echo "<strong style=\"color: #cd0000;\"><i>ERRO:</i></strong> Falha ao realizar a query no banco de dados"; }
+      echo "A pasta $nome deve conter <strong>$n</strong> arquivos. <br>";
+    } else { echo "<strong style=\"color: #cd0000;\"><i>ERRO:</i></strong> Falha ao realizar a query na tabela $nome. <br>"; }
   }
 
   function testarPermissoes() {
@@ -74,7 +77,7 @@
     if($dir) {
       echo "Permissão para a pasta <strong>\"$nome\"</strong> concedida e funcionando normalmente. <br>";
     } else {
-      echo "<strong style='color: #cd0000;''><i>ERRO:</i></strong> A pasta <strong>\"$nome\"</strong> não contém permissões de escrita <br>";
+      echo "<strong style='color: #cd0000;''><i>ERRO:</i></strong> A pasta <strong>\"$nome\"</strong> não contém permissões de escrita. <br>";
     }
   }
 
@@ -94,17 +97,37 @@
       $c++;
     }
 
-    echo "A pasta <strong>\"$nome\"</strong> contém $c arquivos <br>";
+    echo "A pasta <strong>\"$nome\"</strong> contém $c arquivos. <br>";
   }
 
   function gerarModulos($modulos) {
     foreach ($modulos as $key) {
       if(extension_loaded($key)) {
-        echo "O módulo <strong>\"$key\"</strong> está habilitado <br>";
+        echo "O módulo <strong>\"$key\"</strong> está habilitado. <br>";
       } else {
-        echo "<strong style=\"color: #cd0000;\"><i>ERRO:</i></strong> O módulo <strong>\"$key\"</strong> não está habilitado <br>";
+        echo "<strong style=\"color: #cd0000;\"><i>ERRO:</i></strong> O módulo <strong>\"$key\"</strong> não está habilitado. <br>";
       }
     }
+  }
+
+  function testarRelatorios() {
+    $input = __DIR__ . "../relatorios/rel.jasper";
+    $output = __DIR__ . "../relatorios/testes";
+    $options = [
+      "format" => ["pdf", "rtf"]
+    ];
+
+    $jasper = new PHPJasper;
+
+    if($jasper->process(
+      $input,
+      $output,
+      $options
+    )->execute()) {
+      echo "O gerador de relatórios está funcionando normalmente. <br>";
+    } else {
+      echo "<strong style=\"color: #cd0000;\"><i>ERRO:</i></strong> O gerador de relatórios não conseguiu gerar um pdf. <br>";
+    };
   }
 
   call_user_func($_POST['function']);
