@@ -111,23 +111,21 @@
   }
 
   function testarRelatorios() {
-    $input = __DIR__ . "../relatorios/rel.jasper";
-    $output = __DIR__ . "../relatorios/testes";
-    $options = [
-      "format" => ["pdf", "rtf"]
-    ];
+    global $host, $usuario, $senha, $banco;
+    $nome_pdf = md5(gerarnumeros());
+    exec("/var/www/html/obras4/codigo_fonte/relatorio/../libs/phpjasper-master/src/../bin/jasperstarter/bin/jasperstarter process '/var/www/html/obras4/codigo_fonte/relatorio/jasper/obras_por_orgao.jasper' -o '/var/www/html/obras4/codigo_fonte/testes_ambiente/api/$nome_pdf' -f pdf -P municipio='0' situacao='0' ano_exercicio='2016' orgao='54' -t postgres -u $usuario -p $senha -H $host -n $banco --db-port 5432
+");
 
-    $jasper = new PHPJasper;
-
-    if($jasper->process(
-      $input,
-      $output,
-      $options
-    )->execute()) {
+    if(file_exists($nome_pdf . ".pdf")) {
       echo "O gerador de relatórios está funcionando normalmente. <br>";
+      unlink($nome_pdf . ".pdf");
     } else {
       echo "<strong style=\"color: #cd0000;\"><i>ERRO:</i></strong> O gerador de relatórios não conseguiu gerar um pdf. <br>";
-    };
+    }
+  }
+
+  function gerarnumeros($length = 10) {
+     return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopkrstuvxz', ceil($length/strlen($x)) )),1,$length);
   }
 
   call_user_func($_POST['function']);

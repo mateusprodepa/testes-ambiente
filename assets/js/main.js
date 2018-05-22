@@ -42,9 +42,7 @@ const modulos = [
 
 function testarDados() {
   for(var i in loaders) { loaders[i].className = isLoading }
-  modulos.forEach(modulo => {
-    testarModulo(URL, modulo.func, modulo.loader);
-  });
+  modulos.forEach(modulo => testarModulo(URL, modulo.func, modulo.loader));
   result.innerHTML +=
   `
   <hr>
@@ -52,7 +50,7 @@ function testarDados() {
   <hr>
   `;
   setTimeout(function() {
-    scroll(document.querySelector("#resultado"));
+    scroll(result);
   }, 200);
 }
 
@@ -72,11 +70,13 @@ testBtn.addEventListener("click", testarDados);
 clearBtn.addEventListener("click", function() {
   ativarModal();
 });
+
 popUpBtnNo.addEventListener("click", fecharModal);
 popUpBtnYes.addEventListener("click", function() {
   result.innerHTML = "";
   fecharModal();
 });
+
 closeModal.addEventListener("click", fecharModal);
 window.addEventListener("keydown", function(e) {
   if (e.keyCode !== 13) return;
